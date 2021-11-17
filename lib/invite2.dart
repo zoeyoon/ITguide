@@ -1,18 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'jmeeting1.dart';
-import 'invite2.dart';
+import 'jmeeting4.dart';
 
-class Invite extends StatefulWidget{
-  const Invite({Key? key, required this.title}) : super(key: key);
+class Invite2 extends StatefulWidget{
+  const Invite2({Key? key, required this.title}) : super(key: key);
   
   final String title;
 
   @override
-  _InviteState createState() => _InviteState();
+  _InviteState2 createState() => _InviteState2();
 }
 
-class _InviteState extends State<Invite> {
+class _InviteState2 extends State<Invite2> {
   @override
 
   Widget build(BuildContext context){
@@ -27,9 +26,9 @@ class _InviteState extends State<Invite> {
             alignment: Alignment.center,
             icon: const Icon(Icons.arrow_back_ios),
             onPressed: () {
-              Navigator.pop(
+              Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const JMeeting1(title : 'IT 가이드')),
+                MaterialPageRoute(builder: (context) => const JMeeting4(title : 'IT 가이드')),
               );
             },
           ),
@@ -52,20 +51,16 @@ class _InviteState extends State<Invite> {
                   builder: (context) {
                     return AlertDialog(
                       content: const Text(
-                        "잘했어요!\n아래의 '초대' 버튼을 클릭한 후 \n'초대 링크 복사' 버튼을 클릭해주세요!",
+                        "잘했어요! \n이제 복사된 초대 링크를 \n친구들에게 전달하여 친구들과 \n줌 회의를 즐겨봐요! \n상단에 왼쪽으로 향해있는 \n화살표를 눌러 회의실로 \n돌아가요!",
                         style: TextStyle(
                         fontSize: 20, fontWeight: FontWeight.bold),
                         textAlign: TextAlign.center,
                       ),
                       actions: <Widget>[
                         TextButton(
-                          child: const Text('다음'),
+                          child: const Text('확인'),
                           onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const Invite2(title : '회의 화면')),
-                            );
+                            Navigator.of(context).pop();
                           },
                         ),
                       ]

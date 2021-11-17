@@ -1,8 +1,8 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
-import 'nzoom.dart';
-import 'nmeeting1.dart';
+import 'zoom.dart';
+import 'meeting.dart';
 
 class NewMeeting extends StatefulWidget {
   const NewMeeting({Key? key, required this.title}) : super(key: key);

@@ -74,6 +74,32 @@ class _ZPageState extends State<ZPage>{
                   height: 20,
                 ),
                 _user(),
+                Container (
+                  height: 270,
+                ),
+                FloatingActionButton(
+                onPressed: () => showDialog(
+                  context: context,
+                  barrierDismissible: true,
+                  builder: (context) {
+                    return AlertDialog(
+                      content: const Text(
+                        "새로운 회의 생성을 위해 상단의 주황색 버튼을 터치해주세요!",
+                        style: TextStyle(
+                          fontSize: 20, fontWeight: FontWeight.bold),
+                          textAlign: TextAlign.center,
+                        ),
+                        actions: <Widget>[
+                          TextButton(
+                          child: const Text('확인'),
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                        ),
+                      ]
+                    );
+                  }),
+                child: Image.asset('images/maru.png')),
               ],
             ),
           )

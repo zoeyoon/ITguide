@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'jmeeting1.dart';
-import 'invite2.dart';
+import 'meeting.dart';
 
 class Invite extends StatefulWidget{
   const Invite({Key? key, required this.title}) : super(key: key);
@@ -29,7 +28,7 @@ class _InviteState extends State<Invite> {
             onPressed: () {
               Navigator.pop(
                 context,
-                MaterialPageRoute(builder: (context) => const JMeeting1(title : 'IT 가이드')),
+                MaterialPageRoute(builder: (context) => const Meeting(title : 'IT 가이드')),
               );
             },
           ),
@@ -39,44 +38,14 @@ class _InviteState extends State<Invite> {
             child: ListView(
               children: [
                 Container(
+                  color: const Color(0XFF242424),
                   padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
                   child: _user(),
                 ),
                 Container(
-                  height: 500
+                color: const Color(0XFF242424),
+                height: 600
                 ),
-                FloatingActionButton(
-                onPressed: () => showDialog(
-                  context: context,
-                  barrierDismissible: true,
-                  builder: (context) {
-                    return AlertDialog(
-                      content: const Text(
-                        "잘했어요!\n아래의 '초대' 버튼을 클릭한 후 \n'초대 링크 복사' 버튼을 클릭해주세요!",
-                        style: TextStyle(
-                        fontSize: 20, fontWeight: FontWeight.bold),
-                        textAlign: TextAlign.center,
-                      ),
-                      actions: <Widget>[
-                        TextButton(
-                          child: const Text('다음'),
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const Invite2(title : '회의 화면')),
-                            );
-                          },
-                        ),
-                      ]
-                    );
-                  }
-                ),
-                child: Image.asset('images/maru.png')
-              ),
-              Container(
-                height: 50
-              ),
               _buttons(),
               ],
             )

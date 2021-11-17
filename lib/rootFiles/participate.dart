@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'zmenu.dart';
-import 'jmeeting1.dart';
+import 'meeting.dart';
 
 class Participate extends StatefulWidget {
   const Participate({Key? key, required this.title}) : super(key: key);
@@ -46,18 +46,18 @@ class _ParticipateState extends State<Participate> {
                   decoration: const BoxDecoration(
                     color: Color(0xFF38383a),
                   ),
-                  child: const TextField(
-                    style: TextStyle(
-                      color: Color(0xFFffffff)
-                    ),
+                  child: TextField(
                     textAlignVertical: TextAlignVertical.center,
-                    cursorColor: Color(0xFFffffff),
-                    textAlign: TextAlign.center,
-                    decoration: InputDecoration(  
+                    cursorColor: const Color(0xFFffffff),
+                    decoration: InputDecoration(
+                      prefixIcon: Icon(
+                        Icons.search,
+                        color: const Color(0xFFffffff).withOpacity(0.5),
+                      ),
                       hintText: "회의 ID",
-                      hintStyle: TextStyle(
+                      hintStyle: const TextStyle(
                         fontSize: 15.2, 
-                        color: Color(0xFF979797),
+                        color: Color(0xFFffffff),
                       ),
                       border: InputBorder.none),
                   ), 
@@ -85,18 +85,18 @@ class _ParticipateState extends State<Participate> {
                   decoration: const BoxDecoration(
                     color: Color(0xFF38383a),
                   ),
-                  child: const TextField(
-                    style: TextStyle(
-                      color: Color(0xFFffffff)
-                    ),
+                  child: TextField(
                     textAlignVertical: TextAlignVertical.center,
-                    cursorColor: Color(0xFFffffff),
-                    textAlign: TextAlign.center,
+                    cursorColor: const Color(0xFFffffff),
                     decoration: InputDecoration(
-                      hintText: "이름",
-                      hintStyle: TextStyle(
+                      prefixIcon: Icon(
+                        Icons.search,
+                        color: const Color(0xFFffffff).withOpacity(0.5),
+                      ),
+                      hintText: "회의 ID",
+                      hintStyle: const TextStyle(
                         fontSize: 15.2, 
-                        color: Color(0xFF979797),
+                        color: Color(0xFFffffff),
                       ),
                       border: InputBorder.none
                     ),
@@ -161,34 +161,6 @@ class _ParticipateState extends State<Participate> {
                   ),
                   child: _camOff(),
                 ),
-
-                Container(
-                  height: 180
-                ),
-
-                FloatingActionButton(
-                  onPressed: () => showDialog(
-                    context: context,
-                    barrierDismissible: true,
-                    builder: (context) {
-                      return AlertDialog(
-                        content: const Text(
-                          "회의 ID와 이름을 입력한 이후 \n'참가' 버튼을 클릭해주세요!",
-                          style: TextStyle(
-                          fontSize: 20, fontWeight: FontWeight.bold),
-                          textAlign: TextAlign.center,
-                        ),
-                        actions: <Widget>[
-                          TextButton(
-                            child: const Text('확인'),
-                            onPressed: () {
-                              Navigator.of(context).pop();
-                            },
-                          ),
-                        ]
-                      );
-                    }),
-                  child: Image.asset('images/maru.png')),
               ],
             )
           )
@@ -208,7 +180,7 @@ class _ParticipateState extends State<Participate> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const JMeeting1(title : '회의 화면')),
+                MaterialPageRoute(builder: (context) => const Meeting(title : '회의 화면')),
               );
             },
             child: const Text(

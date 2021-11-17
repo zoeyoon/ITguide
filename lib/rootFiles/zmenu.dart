@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'nzoom.dart';
-import 'jzoom.dart';
+import 'zoom.dart';
 
 class MenuPage extends StatefulWidget {
   const MenuPage({Key? key, required this.title}) : super(key: key);
@@ -84,7 +83,7 @@ class _MenuPageState extends State<MenuPage> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const ZPage2(title : '초기 화면')),
+                MaterialPageRoute(builder: (context) => const ZPage(title : '초기 화면')),
               );
             },
             child: const Text(

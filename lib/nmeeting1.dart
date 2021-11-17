@@ -1,8 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'popup.dart';
-import 'zoom.dart';
-import 'invite.dart';
+import 'zmenu.dart';
+import 'nmeeting2.dart';
 
 class Meeting extends StatefulWidget{
   const Meeting({Key? key, required this.title}) : super(key: key);
@@ -15,12 +14,8 @@ class Meeting extends StatefulWidget{
 }
 
 class _MeetingState extends State<Meeting> {
-  bool selected1 = true;
-  bool selected2 = true;
-  bool audioCon = false;
   @override
   Widget build(BuildContext context) {
-    MaterialPageRoute(builder: (context) => const MyStatefulWidget(title : 'IT 가이드'));
     return MaterialApp(
       title: '회의 화면',
       home: Scaffold(
@@ -47,7 +42,7 @@ class _MeetingState extends State<Meeting> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const ZPage(title : '초기 화면')),
+                    MaterialPageRoute(builder: (context) => const MenuPage(title : '초기 화면')),
                   );
                 },
                 child: const Text(
@@ -67,8 +62,38 @@ class _MeetingState extends State<Meeting> {
                 height: 5 
               ),
               Container(
-                color: const Color(0XFF242424),
-                height: 630
+                height: 520
+              ),
+              FloatingActionButton(
+                onPressed: () => showDialog(
+                  context: context,
+                  barrierDismissible: true,
+                  builder: (context) {
+                    return AlertDialog(
+                      content: const Text(
+                        "새로운 회의에 들어왔어요!\n 하단의 오디오 버튼을 누른 후,\n'Wifi 또는 휴대전화 데이터' \n버튼을 터치하여 \n오디오에 연결해요! ",
+                        style: TextStyle(
+                          fontSize: 20, fontWeight: FontWeight.bold),
+                          textAlign: TextAlign.center,
+                        ),
+                        actions: <Widget>[
+                          TextButton(
+                            child: const Text('다음'),
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const Meeting2(title : '회의 화면')),
+                              );
+                            },
+                          ),
+                      ]
+                    );
+                  }),
+                child: Image.asset('images/maru.png')
+              ),
+              Container(
+                height: 55
               ),
               _buttons(),
               Container(
@@ -90,16 +115,8 @@ class _MeetingState extends State<Meeting> {
           width: 66,
           height: 30,
           child: IconButton(
-            icon: Icon( selected2 ? Icons.headset_off : Icons.headset),
+            icon: Icon(Icons.headset_off),
             onPressed: () {
-              if (audioCon != true){
-                _showDialog(context);
-              }
-              else{
-                setState(() {
-                  selected2 = !selected2;
-                });
-              }
             },
             iconSize: 35,
             color: const Color(0xFFa6a6a6),
@@ -109,11 +126,8 @@ class _MeetingState extends State<Meeting> {
           width: 66,
           height: 30,
           child: IconButton(
-            icon: Icon( selected1 ? Icons.videocam_rounded : Icons.videocam_off_rounded),
+            icon: Icon(Icons.videocam_rounded),
             onPressed: () {
-              setState(() {
-                selected1 = !selected1;
-              });
             },
             iconSize: 35,
             color: const Color(0xFFa6a6a6),
@@ -135,10 +149,6 @@ class _MeetingState extends State<Meeting> {
           child: IconButton(
             icon: const Icon(Icons.supervisor_account_rounded),
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const Invite(title : '초대')),
-              );
             },
             iconSize: 35,
             color: const Color(0xFFa6a6a6),
@@ -237,13 +247,7 @@ class _MeetingState extends State<Meeting> {
           actions: <Widget>[
             CupertinoDialogAction(
               child: const Text("Wifi 또는 휴대전화 데이터"),
-              onPressed: () {
-                Navigator.of(context).pop();
-                audioCon = !audioCon;
-                setState(() {
-                  selected2 = !selected2;
-                });
-              },
+              onPressed: () {}
             ),
             CupertinoDialogAction(
               child: const Text("오디오 없음"),
